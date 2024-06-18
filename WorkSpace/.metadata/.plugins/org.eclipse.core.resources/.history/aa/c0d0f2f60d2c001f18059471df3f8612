@@ -1,0 +1,5 @@
+package net.itinajero.empleos.controller;
+
+public class HomeController {
+
+}
