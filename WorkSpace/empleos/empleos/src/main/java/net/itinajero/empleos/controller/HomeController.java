@@ -1,5 +1,7 @@
 package net.itinajero.empleos.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +14,16 @@ import net.itinajero.empleos.model.Vacante;
 
 @Controller
 public class HomeController {
+	
+	
+	@GetMapping("/tabla")
+	public String mostrarTabla(Model model) {
+		List<Vacante>  lista = getVacantes();
+		model.addAttribute("vacantes", lista);
+		
+		return "tabla";
+		
+	}
 	
 	@GetMapping("/detalle")
 	public String mostrarDetalle(Model model) {
@@ -57,6 +69,68 @@ public class HomeController {
 		model.addAttribute("vigencia", avaiable);
 		
 		return "Home";
+	}
+	
+	
+	
+	/* Metodo que retorna una lista de objetos */
+	
+	private List<Vacante> getVacantes(){
+		
+		
+		SimpleDateFormat fecha = new SimpleDateFormat("dd-MM-yyyy");
+		List<Vacante> lista = new LinkedList<>();
+		
+		try {
+			//Creamos la oferta de trabajo 1
+			Vacante vacante1 = new Vacante();
+			vacante1.setId(1);
+			vacante1.setNombre("Ing. civil");
+			vacante1.setDescripcion("Solicitamos ing civil para gestionar un puente peatoinal");
+			vacante1.setFecha(fecha.parse("08-02-2019"));
+			vacante1.setSalario(8500.0);
+			
+			//Creamos la oferta de trabajo 2
+			Vacante vacante2 = new Vacante();
+			vacante2.setId(2);
+			vacante2.setNombre("Contador publico");
+			vacante2.setDescripcion("Contador con experiencia minima  de 5 años titulado");
+			vacante2.setFecha(fecha.parse("09-02-2019"));
+			vacante2.setSalario(9200.0);
+			
+			
+			//Creamos la oferta de trabajo 3
+			Vacante vacante3 = new Vacante();
+			vacante3.setId(3);
+			vacante3.setNombre("Ing. Electrico");
+			vacante3.setDescripcion("Empresa internacional exige un ing electrico por necesidades de mercado");
+			vacante3.setFecha(fecha.parse("10-02-2019"));
+			vacante3.setSalario(99500.0);
+			
+			
+			//Creamos la oferta de trabajo 1
+			Vacante vacante4 = new Vacante();
+			vacante4.setId(4);
+			vacante4.setNombre("Diseñador grafico");
+			vacante4.setDescripcion("Creativo deiseñador para paneles pulicitarios de mercadeo");
+			vacante4.setFecha(fecha.parse("11-02-2019"));
+			vacante4.setSalario(9999.9);
+			
+			
+			// Agregamos los 4 objetos de tipo Vacante a la lista
+			
+			lista.add(vacante1);
+			lista.add(vacante2);
+			lista.add(vacante3);
+			lista.add(vacante4);
+			
+		} catch(ParseException e){
+			System.out.println("Error: " + e.getMessage());
+		}
+		
+		return lista;
+		
+		
 	}
 
 }

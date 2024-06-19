@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\Programas -IDE\Springboot\WorkSpace\empleos\empleos"/>
 			<item value="C:\Users\Gustavo\Documents\WorkSpace\empleos"/>
 			<item value="C:\Users\Gustavo\Documents\WorkSpace\holaMundo"/>
 		</list>
