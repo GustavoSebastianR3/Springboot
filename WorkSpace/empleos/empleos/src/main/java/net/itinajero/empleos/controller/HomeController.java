@@ -89,6 +89,7 @@ public class HomeController {
 			vacante1.setDescripcion("Solicitamos ing civil para gestionar un puente peatoinal");
 			vacante1.setFecha(fecha.parse("08-02-2019"));
 			vacante1.setSalario(8500.0);
+			vacante1.setDestacado(1); 
 			
 			//Creamos la oferta de trabajo 2
 			Vacante vacante2 = new Vacante();
@@ -97,6 +98,8 @@ public class HomeController {
 			vacante2.setDescripcion("Contador con experiencia minima  de 5 años titulado");
 			vacante2.setFecha(fecha.parse("09-02-2019"));
 			vacante2.setSalario(9200.0);
+			vacante2.setDestacado(0); 
+
 			
 			
 			//Creamos la oferta de trabajo 3
@@ -106,6 +109,8 @@ public class HomeController {
 			vacante3.setDescripcion("Empresa internacional exige un ing electrico por necesidades de mercado");
 			vacante3.setFecha(fecha.parse("10-02-2019"));
 			vacante3.setSalario(99500.0);
+			vacante3.setDestacado(0); 
+
 			
 			
 			//Creamos la oferta de trabajo 1
@@ -115,6 +120,8 @@ public class HomeController {
 			vacante4.setDescripcion("Creativo deiseñador para paneles pulicitarios de mercadeo");
 			vacante4.setFecha(fecha.parse("11-02-2019"));
 			vacante4.setSalario(9999.9);
+			vacante4.setDestacado(1); 
+
 			
 			
 			// Agregamos los 4 objetos de tipo Vacante a la lista
@@ -132,5 +139,7 @@ public class HomeController {
 		
 		
 	}
+	
+	
 
 }
