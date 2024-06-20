@@ -21,6 +21,8 @@
         <th>Salario</th>
         <th>Fecha</th>
         <th>Destacada</th>
+        <th>Detalle</th>
+        <th>Borrar</th>
        
     </tr>
     
@@ -42,6 +44,12 @@
        <span th:unless="${vacante.destacado == 1}" class = "badge badge-danger">NO</span>
        
        
+       </td>
+       <td>
+       <a th:href="@{/vacantes/view/{id}(id=${vacante.id})  }" class="btn btn-success">Detalle</a>
+       </td>
+       <td>
+       <a th:href="@{/vacantes/delete/{id}(id=${vacante.id})  }" class="btn btn-success">Borrar</a>
        </td>
        	
     </tr>
