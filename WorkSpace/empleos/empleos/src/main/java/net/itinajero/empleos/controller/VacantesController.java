@@ -29,6 +29,8 @@ public class VacantesController {
 	//CUALES SON LOS 4 PILARES DE LA PROGRAMACION ORIENTADA A OBJETO //ABSTRACCION //HERENCIA //  ENCAPSULAMIENTO // POLIMORFISMO
 	//POSTMAPPING - METODO MÁS SEGURO 
 	
+	//RESTFULL - CONCEPTOS CLAROS
+	
 	@GetMapping("/view/{id}")
 	public String verDetalle(@PathVariable("id") int idVacante, Model model) {
 		
