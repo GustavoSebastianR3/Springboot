@@ -25,13 +25,14 @@ public class VacantesController {
 		return "mensaje";
 		
 	}
+	//AUTOWIRED - 
+	//CUALES SON LOS 4 PILARES DE LA PROGRAMACION ORIENTADA A OBJETO //ABSTRACCION //HERENCIA //  ENCAPSULAMIENTO // POLIMORFISMO
+	//POSTMAPPING - METODO MÁS SEGURO 
 	
 	@GetMapping("/view/{id}")
 	public String verDetalle(@PathVariable("id") int idVacante, Model model) {
 		
 		Vacante vacante = serviceVacante.buscarPorId(idVacante);
-		
-		
 		System.out.println("El id del vacante es " + vacante);
 		model.addAttribute("vacante", vacante);
 		return "detalle";

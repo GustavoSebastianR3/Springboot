@@ -29,7 +29,7 @@ public class VacantesServiceImpl implements IVacantesService {
 			vacante1.setFecha(fecha.parse("08-02-2019"));
 			vacante1.setSalario(8500.0);
 			vacante1.setDestacado(1); 
-			vacante1.setImagen("empresa1.png");
+			vacante1.setImagen("logo1.png");
 			
 			//Creamos la oferta de trabajo 2
 			Vacante vacante2 = new Vacante();
@@ -39,7 +39,7 @@ public class VacantesServiceImpl implements IVacantesService {
 			vacante2.setFecha(fecha.parse("09-02-2019"));
 			vacante2.setSalario(9200.0);
 			vacante2.setDestacado(0); 
-			vacante2.setImagen("empresa2.png");
+			vacante2.setImagen("logo2.png");
 
 
 			
@@ -65,7 +65,7 @@ public class VacantesServiceImpl implements IVacantesService {
 			vacante4.setFecha(fecha.parse("11-02-2019"));
 			vacante4.setSalario(9999.9);
 			vacante4.setDestacado(1);
-			vacante4.setImagen("empresa4.png");
+			vacante4.setImagen("logo4.png");
 
 
 			

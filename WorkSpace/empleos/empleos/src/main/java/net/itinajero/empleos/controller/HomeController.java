@@ -61,20 +61,8 @@ public class HomeController {
 	@GetMapping("/")
 	public String mostrarHome(Model model) {
 		
-		/*model.addAttribute("mensaje", "Bienvenidos a empleos");
-		model.addAttribute("fecha", new Date());
-		*/
-		
-		String name = "Auxiliar de Contabilidad";
-		Date date = new Date();
-		double salary = 900.0;
-		boolean avaiable = true;
-		
-		model.addAttribute("nombre", name );
-		model.addAttribute("fecha", date);
-		model.addAttribute("salario", salary);
-		model.addAttribute("vigencia", avaiable);
-		
+		List<Vacante>  lista =serviceVacante.buscarTodas();
+		model.addAttribute("vacantes", lista);
 		return "Home";
 	}
 	
