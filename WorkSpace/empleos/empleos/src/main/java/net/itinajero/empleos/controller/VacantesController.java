@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import net.itinajero.empleos.model.Vacante;
 import net.itinajero.empleos.service.ICategoriaService;
 import net.itinajero.empleos.service.IVacantesService;
+import net.itinajero.empleos.util.Utileria;
 
 @Controller
 @RequestMapping("/vacantes")
@@ -40,12 +42,25 @@ public class VacantesController {
 	}
 	
 	@PostMapping("/save")
-	public String guardar(Vacante vacante, BindingResult result, RedirectAttributes atributes) {
+	public String guardar(Vacante vacante, BindingResult result, RedirectAttributes atributes, @RequestParam("archivoImagen") MultipartFile multiPart) {
+		
+		
 		
 		if(result.hasErrors()) {
 			for(ObjectError error: result.getAllErrors()) {
 				System.out.println("Ocurrio un error: " + error.getDefaultMessage());
 			}
+		}
+		
+		if(!multiPart.isEmpty()) {
+			
+			String ruta = "D:/empleos/img-vacantes";
+			String nombreImagen = Utileria.guardarArchivo(multiPart, ruta);
+			
+				if(nombreImagen != null) {
+					vacante.setImagen(nombreImagen);
+				
+				}
 		}
 		
 		serviceVacante.guardar(vacante);
