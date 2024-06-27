@@ -1,31 +1,47 @@
 package net.itinajero.empleos.controller;
 
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import net.itinajero.empleos.model.Categorias;
+import net.itinajero.empleos.service.ICategoriaService;
 
 @Controller
-@RequestMapping("/categorias")
+@RequestMapping(value="/categorias")
 public class CategoriasController {
 	
-	@GetMapping("/create")
-	public String crear() {
-		return "categorias/formCategorias";
-	}
+	@Autowired
+   	private ICategoriaService serviceCategorias;
 	
-	@GetMapping("/index")
+	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String mostrarIndex(Model model) {
-		return "categorias/listCategorias";
+		List<Categorias> lista = serviceCategorias.buscarTodas();
+    	model.addAttribute("categorias", lista);
+		return "categorias/listCategorias";		
 	}
 	
-	@PostMapping("/save")
-	public String guardar(@RequestParam("nom") String nombre, @RequestParam("des") String descripcion) {
-		System.out.println("El nombre es " + nombre);
-		System.out.println("La descripcion es: " + descripcion	);
-		return "categorias/listCategorias";
+	@RequestMapping(value="/create", method=RequestMethod.GET)
+	public String crear(Categorias categoria) {
+		return "categorias/formCategoria";
 	}
-
+	
+	@RequestMapping(value="/save", method=RequestMethod.POST)
+	public String guardar(Categorias categoria, BindingResult result, RedirectAttributes attributes) {
+		if (result.hasErrors()){		
+			System.out.println("Existieron errores");
+			return "categorias/formCategoria";
+		}	
+		
+		// Guadamos el objeto categoria en la bd
+		serviceCategorias.guardar(categoria);
+		attributes.addFlashAttribute("msg", "Los datos de la categoría fueron guardados!");		
+		return "redirect:/categorias/index";
+	}
+	
 }
