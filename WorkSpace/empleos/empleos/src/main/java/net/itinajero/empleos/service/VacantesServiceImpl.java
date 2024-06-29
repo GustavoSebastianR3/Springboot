@@ -28,6 +28,7 @@ public class VacantesServiceImpl implements IVacantesService {
 			vacante1.setDescripcion("Solicitamos ing civil para gestionar un puente peatoinal");
 			vacante1.setFecha(fecha.parse("08-02-2019"));
 			vacante1.setSalario(8500.0);
+			vacante1.setEstatus("Aprobadisima");
 			vacante1.setDestacado(1); 
 			vacante1.setImagen("logo1.png");
 			
