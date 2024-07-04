@@ -2,53 +2,57 @@ package net.itinajero.empleos.service;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import net.itinajero.empleos.model.Categorias;
+import net.itinajero.empleos.model.Categoria;
+
 
 @Service
+
 public class CategoriasServiceImpl implements ICategoriaService{
 
-	private List<Categorias> lista = null;
+	private List<Categoria> lista = null;
 	
 	public CategoriasServiceImpl() {
-		lista = new LinkedList<Categorias>();
+		lista = new LinkedList<Categoria>();
 		
 		// Creamos algunas Categorias para poblar la lista ...
 		
 		// Categoria 1
-		Categorias cat1 = new Categorias();
+		Categoria cat1 = new Categoria();
 		cat1.setId(1);
 		cat1.setNombre("Contabilidad");
 		cat1.setDescripcion("Descripcion de la categoria Contabilidad");
 		
 		// Categoria 2
-		Categorias cat2 = new Categorias();
+		Categoria cat2 = new Categoria();
 		cat2.setId(2);
 		cat2.setNombre("Ventas");
 		cat2.setDescripcion("Trabajos relacionados con Ventas");
 		
 					
 		// Categoria 3
-		Categorias cat3 = new Categorias();
+		Categoria cat3 = new Categoria();
 		cat3.setId(3);
 		cat3.setNombre("Comunicaciones");
 		cat3.setDescripcion("Trabajos relacionados con Comunicaciones");
 		
 		// Categoria 4
-		Categorias cat4 = new Categorias();
+		Categoria cat4 = new Categoria();
 		cat4.setId(4);
 		cat4.setNombre("Arquitectura");
 		cat4.setDescripcion("Trabajos de Arquitectura");
 		
 		// Categoria 5
-		Categorias cat5 = new Categorias();
+		Categoria cat5 = new Categoria();
 		cat5.setId(5);
 		cat5.setNombre("Educacion");
 		cat5.setDescripcion("Maestros, tutores, etc");
 		
 		
-		Categorias cat6 = new Categorias();
+		Categoria cat6 = new Categoria();
 		cat6.setId(6);
 		cat6.setNombre("Programacion");
 		cat6.setDescripcion("Trabajo para programadores");
@@ -64,16 +68,16 @@ public class CategoriasServiceImpl implements ICategoriaService{
 
 	}
 	
-	public void guardar(Categorias categoria) {		
+	public void guardar(Categoria categoria) {		
 		lista.add(categoria);
 	}
 
-	public List<Categorias> buscarTodas() {
+	public List<Categoria> buscarTodas() {
 		return lista;
 	}
 
-	public Categorias buscarPorId(Integer idCategoria) {			
-		for (Categorias cat : lista) {
+	public Categoria buscarPorId(Integer idCategoria) {			
+		for (Categoria cat : lista) {
 			if (cat.getId()==idCategoria) {
 				return cat;
 			}

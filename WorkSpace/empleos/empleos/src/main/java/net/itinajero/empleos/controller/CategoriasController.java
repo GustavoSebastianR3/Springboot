@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import net.itinajero.empleos.model.Categorias;
+import net.itinajero.empleos.model.Categoria;
+
 import net.itinajero.empleos.service.ICategoriaService;
 
 @Controller
@@ -21,18 +22,18 @@ public class CategoriasController {
 	
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String mostrarIndex(Model model) {
-		List<Categorias> lista = serviceCategorias.buscarTodas();
+		List<Categoria> lista = serviceCategorias.buscarTodas();
     	model.addAttribute("categorias", lista);
 		return "categorias/listCategorias";		
 	}
 	
 	@RequestMapping(value="/create", method=RequestMethod.GET)
-	public String crear(Categorias categoria) {
+	public String crear(Categoria categoria) {
 		return "categorias/formCategoria";
 	}
 	
 	@RequestMapping(value="/save", method=RequestMethod.POST)
-	public String guardar(Categorias categoria, BindingResult result, RedirectAttributes attributes) {
+	public String guardar(Categoria categoria, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()){		
 			System.out.println("Existieron errores");
 			return "categorias/formCategoria";

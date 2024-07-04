@@ -2,8 +2,25 @@ package net.itinajero.empleos.model;
 
 import java.util.Date;
 
+
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
+
+@Entity
+@Table(name="Vacantes")
 public class Vacante {
 
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id; // Representa dato numerico
 	private String nombre;
 	private String descripcion;
@@ -13,6 +30,10 @@ public class Vacante {
 	private String imagen="no-image.png";
 	private String estatus;
 	private String detalles;
+	//@Transient
+	@OneToOne
+	@JoinColumn(name = "idCategoria")
+	private Categoria categoria;
 	
 	
 	public String getEstatus() {
@@ -73,6 +94,12 @@ public class Vacante {
 	public String toString() {
 		return "Vacante [id= " + id + ", nombre= " + nombre + ", descripcion = " + descripcion + ", fecha = " + fecha
 				+ ", salario =  " + salario + "]";
+	}
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 	
 	
